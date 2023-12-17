@@ -12,4 +12,12 @@ RSpec.describe Api::V1::EstatesController, type: :controller do
     end
   end
 
+  describe 'GET /api/v1/estates/id' do
+    it 'Consegue listar um estate especifico e retornar status 200?' do
+      get :show, params: {id: @estate.id}
+      expect(response.body).to include_json(name: 'Rio Grande do Sul')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
