@@ -20,4 +20,12 @@ RSpec.describe Api::V1::EstatesController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/estates' do
+    it 'Consegue criar um estate e retornar status 201?' do
+      post :create, params: {estate: {name: 'Paraná', capital: 'Curitiba'}, format: :json}
+      expect(response.body).to include_json(capital: 'Curitiba')
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
