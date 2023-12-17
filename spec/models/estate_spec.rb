@@ -21,8 +21,8 @@ RSpec.describe Estate, type: :model do
   describe 'Testes de validação do model Estate' do
 
     it 'estate valido com campos obrigatorios preenchidos?' do
-      @estate.name = ''
-      @estate.capital = ''
+      @estate.name = 'São Paulo'
+      @estate.capital = 'São Paulo'
       expect(@estate).to be_valid
     end
 
