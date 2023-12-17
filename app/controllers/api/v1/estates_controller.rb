@@ -11,6 +11,15 @@ class Api::V1::EstatesController < ApplicationController
     render json: @estate
   end
 
+  def create
+    @estate = Estate.new(estate_params)
+    if @estate.save
+      render json: @estate, status: :created, location: api_v1_estate_url(@estate)
+    else
+      render json: @estate.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_estate
