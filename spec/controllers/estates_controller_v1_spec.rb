@@ -37,4 +37,14 @@ RSpec.describe Api::V1::EstatesController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/estates/id' do
+    it 'Consegue excluir um estate e retornar status 204?' do
+      estate = Estate.last
+      delete :destroy, params: {id: estate.id}
+      expect(Estate.all).not_to include(estate)
+      # puts(">>>>>#{response}")
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
