@@ -7,7 +7,7 @@ RSpec.describe Estate, type: :model do
   describe 'Testes de preenchimento do model Estate' do
 
     it 'name consegue ser preenchido?' do
-      @estate.name = ''
+      @estate.name = 'Pará'
       expect(@estate.name).to eq('Pará')
     end
 
