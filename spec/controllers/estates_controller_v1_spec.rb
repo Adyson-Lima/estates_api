@@ -42,7 +42,6 @@ RSpec.describe Api::V1::EstatesController, type: :controller do
       estate = Estate.last
       delete :destroy, params: {id: estate.id}
       expect(Estate.all).not_to include(estate)
-      # puts(">>>>>#{response}")
       expect(response).to have_http_status(204)
     end
   end

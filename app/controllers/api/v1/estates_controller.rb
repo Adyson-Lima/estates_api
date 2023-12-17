@@ -1,6 +1,6 @@
 class Api::V1::EstatesController < ApplicationController
 
-  before_action :set_estate, only: %i[show update] # show update destroy
+  before_action :set_estate, only: %i[show update destroy] # show update destroy
 
   def index
     @estates = Estate.all 
@@ -26,6 +26,10 @@ class Api::V1::EstatesController < ApplicationController
     else
       render json: @estate.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @estate.destroy!
   end
 
 private
