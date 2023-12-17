@@ -11,6 +11,11 @@ RSpec.describe Estate, type: :model do
       expect(@estate.name).to eq('Pará')
     end
 
+    it 'capital consegue ser preenchido?' do
+      @estate.capital = ''
+      expect(@estate.capital).to eq('Belém')
+    end
+
   end
 
 end
