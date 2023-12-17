@@ -26,6 +26,11 @@ RSpec.describe Estate, type: :model do
       expect(@estate).to be_valid
     end
 
+    it 'estate invalido com campos obrigatorios não preenchidos?' do
+      estate = Estate.new
+      expect(estate).to be_valid
+    end
+
   end
 
 end
