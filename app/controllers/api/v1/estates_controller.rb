@@ -1,6 +1,6 @@
 class Api::V1::EstatesController < ApplicationController
 
-  before_action :set_estate, only: %i[show] # show update destroy
+  before_action :set_estate, only: %i[show update] # show update destroy
 
   def index
     @estates = Estate.all 
@@ -15,6 +15,14 @@ class Api::V1::EstatesController < ApplicationController
     @estate = Estate.new(estate_params)
     if @estate.save
       render json: @estate, status: :created, location: api_v1_estate_url(@estate)
+    else
+      render json: @estate.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @estate.update(estate_params)
+      render json: @estate
     else
       render json: @estate.errors, status: :unprocessable_entity
     end
