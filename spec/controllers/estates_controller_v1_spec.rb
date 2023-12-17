@@ -28,4 +28,13 @@ RSpec.describe Api::V1::EstatesController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/estates/id' do
+    it 'Consegue atualizar um estate e retornar status 200?' do
+      estate = Estate.last
+      patch :update, params: {estate: {name: 'Santa Catarina', capital: 'Florianópolis'}, id: estate.id}
+      expect(response.body).to include_json(name: 'Santa Catarina')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
